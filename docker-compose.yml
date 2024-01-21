@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  web_server:
+    image: my-web-server-image
+    ports:
+      - "8089:80"  # Assuming your web server runs on port 80
+
+
+  ftp_server:
+    image: my-ftp-server-image
+    ports:
+      - "21:21"  # Assuming your FTP server runs on port 21
+
+
+
+
+  hadoop_cluster:
+    image: my-hadoop-image
+    ports:
+      - "9870:9870"  # Example port for Hadoop NameNode Web UI
+      - "8088:8088"  # Example port for Hadoop ResourceManager Web UI
+    environment:
+      HADOOP_VERSION: "3.2.1"  # Replace with your Hadoop version
+
+  nagios:
+    image: jasonrivers/nagios
+    ports:
+      - "8081:80"  # Assuming your Nagios runs on port 80
+    volumes:
+      - ./nagios/etc:/etc/nagios
+      - ./nagios/var:/var/nagios
+      
+  db_server:
+    image: my-mysql-image
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+#  jenkins:
+#    image: my-jenkins-image
+#    ports:
+#      - "8081:8080"  # Assuming your Jenkins runs on port 8080
+#    volumes:
+#      - ./jenkins:/var/jenkins_home
+

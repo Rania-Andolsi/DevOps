@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>3</value>
+    </property>
+    <!-- Add other configuration properties as needed -->
+</configuration>
+
